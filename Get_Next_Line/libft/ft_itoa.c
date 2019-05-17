@@ -1,24 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 00:48:00 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/17 23:28:18 by ikrkharb         ###   ########.fr       */
+/*   Created: 2019/04/04 16:52:54 by ikrkharb          #+#    #+#             */
+/*   Updated: 2019/04/08 16:22:08 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-#define FILLIT_H
-# include <fcntl.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include "Get_Next_Line/get_next_line.h"
+#include "libft.h"
 
-void		fillit(int fd);
-int		get_next_line(const int fd, char **line);
+char	*ft_itoa(int n)
+{
+	char	*str;
+	long	v;
+	int		negative;
+	int		len;
 
-#endif
+	v = n;
+	negative = v < 0 ? 1 : 0;
+	len = ft_find_digits_len(v) + negative;
+	if (!(str = ft_strnew(len)))
+		return (NULL);
+	if (negative)
+	{
+		str[0] = '-';
+		v = -v;
+	}
+	str[len] = '\0';
+	while (len-- - negative)
+	{
+		str[len] = (v % 10) + '0';
+		v /= 10;
+	}
+	return (str);
+}

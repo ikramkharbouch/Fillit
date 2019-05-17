@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 00:48:00 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/17 23:28:18 by ikrkharb         ###   ########.fr       */
+/*   Created: 2019/03/30 20:33:44 by ikrkharb          #+#    #+#             */
+/*   Updated: 2019/04/09 15:06:28 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-#define FILLIT_H
-# include <fcntl.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include "Get_Next_Line/get_next_line.h"
+#include "libft.h"
 
-void		fillit(int fd);
-int		get_next_line(const int fd, char **line);
+int		ft_atoi(const char *str)
+{
+	int			i;
+	int			s;
+	int			sign;
 
-#endif
+	i = 0;
+	s = 0;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\v' || str[i] == '\r'
+			|| str[i] == '\f' || str[i] == '\n')
+		i++;
+	sign = str[i] == '-' ? -1 : 1;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		s = s * 10 + str[i] - '0';
+		i++;
+	}
+	return (s * sign);
+}

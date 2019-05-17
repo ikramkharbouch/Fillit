@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 00:48:00 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/17 23:28:18 by ikrkharb         ###   ########.fr       */
+/*   Created: 2019/03/29 10:30:11 by ikrkharb          #+#    #+#             */
+/*   Updated: 2019/04/25 23:40:34 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-#define FILLIT_H
-# include <fcntl.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include "Get_Next_Line/get_next_line.h"
+#include "libft.h"
 
-void		fillit(int fd);
-int		get_next_line(const int fd, char **line);
+char			*ft_strdup(const char *s1)
+{
+	char		*str;
+	size_t		i;
+	size_t		len;
 
-#endif
+	len = ft_strlen(s1);
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}

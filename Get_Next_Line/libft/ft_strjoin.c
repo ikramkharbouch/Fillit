@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 00:48:00 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/17 23:28:18 by ikrkharb         ###   ########.fr       */
+/*   Created: 2019/04/02 14:43:07 by ikrkharb          #+#    #+#             */
+/*   Updated: 2019/04/25 23:15:00 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-#define FILLIT_H
-# include <fcntl.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include "Get_Next_Line/get_next_line.h"
+#include "libft.h"
 
-void		fillit(int fd);
-int		get_next_line(const int fd, char **line);
+char		*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*str;
 
-#endif
+	str = ft_strnew(ft_strlen(s1) + ft_strlen(s2));
+	if (!str)
+		return (NULL);
+	ft_strcat(str, s1);
+	ft_strcat(str, s2);
+	return (str);
+}

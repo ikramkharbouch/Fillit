@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_find_digits_len.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 00:48:00 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/17 23:28:18 by ikrkharb         ###   ########.fr       */
+/*   Created: 2019/04/04 16:50:41 by ikrkharb          #+#    #+#             */
+/*   Updated: 2019/04/07 13:26:21 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-#define FILLIT_H
-# include <fcntl.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include "Get_Next_Line/get_next_line.h"
+#include "libft.h"
 
-void		fillit(int fd);
-int		get_next_line(const int fd, char **line);
+int			ft_find_digits_len(int n)
+{
+	int count;
 
-#endif
+	count = 0;
+	if (n == 0)
+		return (1);
+	while (n)
+	{
+		n = n / 10;
+		count++;
+	}
+	return (count);
+}

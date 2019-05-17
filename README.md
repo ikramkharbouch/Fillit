@@ -1,6 +1,2 @@
-# Fillit
-Fillit ne consiste pas à recoder Tetris, mais reste une variante du jeu dans l’esprit.
-Votre programme prendra en paramètre un fichier décrivant une liste de Tetriminos
-qu’il devra ensuite agencer entre eux pour former le plus petit carré possible. Le but est
-bien entendu de trouver ce plus petit carré le plus rapidement possible malgré un nombre
-d’agencements qui croît de manière explosive avec chaque pièce supplémentaire
+# GNL
+Vous commencez maintenant à vous rendre compte qu’à chaque fois que vous retrouvez dans la situation de lire des données depuis un file descriptor et que cette donnée n’est pas d’une taille connue à l’avance, c’est compliqué. Quelle taille de buffer choisir ? Combien de fois lire sur le file descriptor pour retrouver la donnée ?

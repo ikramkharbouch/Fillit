@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 00:48:00 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/17 23:28:18 by ikrkharb         ###   ########.fr       */
+/*   Created: 2019/04/02 14:07:19 by ikrkharb          #+#    #+#             */
+/*   Updated: 2019/04/09 14:17:07 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-#define FILLIT_H
-# include <fcntl.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include "Get_Next_Line/get_next_line.h"
+#include "libft.h"
 
-void		fillit(int fd);
-int		get_next_line(const int fd, char **line);
+char		*ft_strstr(const char *haystack, const char *needle)
+{
+	char	*tmp;
+	size_t	i;
 
-#endif
+	if (needle && !(needle[0]))
+		return ((char *)haystack);
+	while (*haystack)
+	{
+		tmp = (char *)haystack;
+		i = 0;
+		while (*haystack == needle[i] && needle[i])
+		{
+			haystack++;
+			i++;
+		}
+		if (!(needle[i]))
+			return (tmp);
+		haystack = tmp + 1;
+	}
+	return (NULL);
+}
