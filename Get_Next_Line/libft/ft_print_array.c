@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 14:34:18 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/04/04 15:29:37 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2019/05/17 23:54:02 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ void	ft_print_array(char **array, int debug)
 	{
 		if (debug)
 			ft_putchar('|');
-		ft_putstr(array[i++]);
+		ft_putstr(array[i]);
 		if (debug)
 			ft_putchar('|');
 		ft_putchar('\n');
+		i++;
 	}
 }

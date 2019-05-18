@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 00:46:52 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/17 23:28:54 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2019/05/18 00:10:23 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,42 +22,50 @@
 	node = ft_lstnew(*tableau, 4);
 
 }*/
+
 char	**tetro_to_matrix(char *buff)
 {
 	char	**matrix;
 	int		i;
 	int		j;
+	int		k;
 
 	i = 0;
 	j = 0;
-	matrix = (char **)malloc(sizeof(char *) * 4);
+	printf("buff is |%s|\n", buff);
+	if (!(matrix = (char **)malloc(sizeof(char *) * 4)))
+			return (NULL);
 	while (i < 4)
 	{
 		matrix[i] = (char *)malloc(sizeof(char) * 4);
-		if (buff[j + 1])
-			j += 1;
-		while (j < 20 && buff[j] != '\n')
+		k = 0;
+		while ((j < 20 && buff[j] != '\n') && k < 4)
 		{
-			matrix[i][j] = buff[j];
+			printf("buff[%d] == %c\n", j, buff[j]); 
+			matrix[i][k] = buff[j];
+			printf("matrix[%d][%d] = %c\n",i,  k, matrix[i][k]);
+			k++;
 			j++;
 		}
-		matrix[i][j] = '\0';
+		printf("matrix[%d] is |%s|\n",i ,matrix[i]);
+		if (buff[j + 1])
+			j += 1;
+		matrix[i][k] = '\0';
 		i++;
 	}
+	matrix[i] = NULL;
 	return (matrix);
 }
 
 void	fillit(int fd)
 {
-	char	buff[21];
-	int		i;
+	char	buff[22];
+	char	**test;
 
-	i = 0;
-	while (read(fd, buff, 20))
+	while (read(fd, buff, 22))
 	{
-		i++;
-		buff[20] = '\0';
-		printf("%s", buff);
-		ft_print_array(tetro_to_matrix(buff), 1);
+		buff[21] = '\0';
 	}
+	test = tetro_to_matrix(buff);
+	ft_print_array(test, 1);
 }
