@@ -1,29 +1,29 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/05/19 00:27:17 by ikrkharb          #+#    #+#              #
-#    Updated: 2019/05/19 00:38:35 by ikrkharb         ###   ########.fr        #
+#    Created: 2019/04/07 12:58:57 by ikrkharb          #+#    #+#              #
+#    Updated: 2019/05/19 21:07:40 by ikrkharb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = 	fillit.a
+NAME = library.a
 
-CC = gcc -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 
 SRCS = $(shell find . -maxdepth 1 -type f | grep -E "\.c")
 
 OBJ = $(SRCS:.c=.o)
 
-$(NAME) : $(OBJ) fillit.h
-	@$(CC) -c $(OBJ)
+$(NAME): $(OBJ) fillit.h
+	@gcc $(FLAGS) -c $(SRCS)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 
-all : $(NAME)
+all: $(NAME)
 
 clean:
 	@/bin/rm -f $(OBJ)
