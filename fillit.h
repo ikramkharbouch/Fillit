@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 00:48:00 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/19 00:41:07 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2019/05/19 21:53:05 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	ft_node_push_back(t_node **alst, t_node *new);
 char    **asign_to_array(char *buff);
 void	create_and_add(char **temp, t_node *new);
 void	push_matrix(char *buff, int i);
+void	ft_print_node(t_node *node);
 
 
 #endif

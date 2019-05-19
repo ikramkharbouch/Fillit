@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 15:50:35 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/18 23:38:59 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2019/05/19 22:58:07 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@ int		main(void)
 
 	fd = open("input", O_RDONLY);
 	read_fd(fd);
+	close(fd);
 	return (0);
 }
