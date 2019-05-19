@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   ft_node_push_back.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/05 14:48:08 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/18 22:27:05 by ikrkharb         ###   ########.fr       */
+/*   Created: 2019/05/19 00:17:22 by ikrkharb          #+#    #+#             */
+/*   Updated: 2019/05/19 00:39:24 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 
-void	ft_lstadd(t_list **alst, t_list *new)
+void	ft_node_push_back(t_node **alst, t_node *new)
 {
+	t_node *current;
+
+	current = *alst;
 	if (*alst)
-		new->next = *alst;
-	*alst = new;
+	{
+		while (current->next)
+		{
+			current = current->next;
+		}
+		new->next = current->next;
+		current->next = new;
+	}
+	else
+	{
+		new->next = current ;
+		current = new;
+	}
 }

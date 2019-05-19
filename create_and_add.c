@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   create_and_add.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/05 14:48:08 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/18 22:27:05 by ikrkharb         ###   ########.fr       */
+/*   Created: 2019/05/19 00:25:27 by ikrkharb          #+#    #+#             */
+/*   Updated: 2019/05/19 00:38:55 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 
-void	ft_lstadd(t_list **alst, t_list *new)
+void	create_and_add(char **temp, t_node *new)
 {
-	if (*alst)
-		new->next = *alst;
-	*alst = new;
+	t_node	*head;
+
+	head = ft_new_node(temp);
+	ft_node_push_back(&head, new);
 }

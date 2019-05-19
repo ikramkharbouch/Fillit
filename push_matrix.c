@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   push_matrix.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/05 14:48:08 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/18 22:27:05 by ikrkharb         ###   ########.fr       */
+/*   Created: 2019/05/19 00:25:56 by ikrkharb          #+#    #+#             */
+/*   Updated: 2019/05/19 00:39:08 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 
-void	ft_lstadd(t_list **alst, t_list *new)
+void	push_matrix(char *buff, int i)
 {
-	if (*alst)
-		new->next = *alst;
-	*alst = new;
+	t_node	*new;
+	char	**temp;
+
+	temp = asign_to_array(buff);
+	if (!i)
+		create_and_add(temp, NULL);
+	else
+	{
+		new = ft_new_node(temp);
+		create_and_add(temp, new);
+	}
 }

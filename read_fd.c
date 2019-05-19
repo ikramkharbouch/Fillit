@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   read_fd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/05 14:48:08 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/18 22:27:05 by ikrkharb         ###   ########.fr       */
+/*   Created: 2019/05/18 23:32:09 by ikrkharb          #+#    #+#             */
+/*   Updated: 2019/05/19 00:27:12 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 
-void	ft_lstadd(t_list **alst, t_list *new)
+void	read_fd(int fd)
 {
-	if (*alst)
-		new->next = *alst;
-	*alst = new;
+	char	buff[22];
+	int		i;
+
+	i = 0;
+	while (read(fd, buff, 21))
+	{
+		buff[21] = '\0';
+		printf("buff == |%s|\n", buff);
+		push_matrix(buff, i);
+		ft_strclr(buff);
+	}
 }

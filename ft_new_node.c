@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_new_node.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/04 22:28:41 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/18 22:46:33 by ikrkharb         ###   ########.fr       */
+/*   Created: 2019/05/18 22:52:54 by ikrkharb          #+#    #+#             */
+/*   Updated: 2019/05/19 00:18:44 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 
-t_list	*ft_lstnew(void const *content, size_t content_size)
+t_node  *ft_new_node(char **array)
 {
-	t_list	*node;
+	t_node *node;
+	int i;
 
-	node = (t_list *)ft_memalloc(sizeof(t_list));
+	i = 0;
+	node = (t_node *)malloc(sizeof(t_node));
 	if (!node)
-		return (NULL);
-	if (content == NULL)
-	{
+		return NULL;
+	if (array == NULL)
 		node->content = NULL;
-		node->content_size = 0;
-	}
-	else
+	if (!(node->content = (char **)malloc(sizeof(char *) * 4)))
+		return (NULL);
+	while (i < 4)
 	{
-		node->content = ft_memalloc(content_size);
-		if (!(node->content))
-		{
-			ft_memdel((void **)&node);
+		if (!(node->content[i] = (char *)malloc(sizeof(char) * 4)))
 			return (NULL);
-		}
-		node->content = ft_memcpy(node->content, content, content_size);
-		node->content_size = content_size;
+		node->content[i] = array[i];
+
+		i++;
 	}
 	node->next = NULL;
 	return (node);
