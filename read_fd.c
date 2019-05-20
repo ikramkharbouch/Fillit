@@ -6,42 +6,43 @@
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 23:32:09 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/19 23:03:10 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2019/05/20 00:51:23 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	read_fd(int fd)
+int		add_tetro(t_node **head, char *buff)
 {
-	char	buff[22];
 	char	**temp;
-	t_node	*node;
-	t_node *new;
-	t_node	*next;
-	int		i;
+	t_node	*new;
 
-	i = 0;
-	while (read(fd, buff, 21))
+	temp = ft_strsplit(buff, '\n');
+	if (!temp)
+		return (-1);
+	new = ft_new_node(temp);
+	if (!new)
 	{
-		buff[21] = '\0';
-		temp = ft_strsplit(buff, '\n');
-		if (i == 0)
-			node = ft_new_node(temp);
-		else
-		{
-			new = ft_new_node(temp);
-			ft_node_push_back(&node, new);
-		}
-		ft_print_array(temp, 1);
-		i++;
+		ft_del_array(temp);
+		ft_memdel((void **)&temp);
+		return (-1);
 	}
-	while (node)
+	ft_node_push_back(head, new);
+	return (1);
+}
+
+t_node	*read_fd(int fd)
+{
+	char	buff[BUF_SIZE + 1];
+	t_node	*head;
+	int		n;
+
+	head = NULL;
+	while ((n = read(fd, buff, BUF_SIZE)))
 	{
-		printf("deleting nodes\n");
-		next = node->next;
-		ft_memdel((void **)&node);
-		node = next;
+		buff[n] = '\0';
+		if (add_tetro(&head, buff) == -1)
+		   return (NULL);
 	}
-	ft_memdel((void **)temp);
+	return (head);
 }

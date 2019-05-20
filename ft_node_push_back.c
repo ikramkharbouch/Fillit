@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 00:17:22 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/19 22:57:43 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2019/05/20 00:37:52 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,15 @@
 
 void	ft_node_push_back(t_node **alst, t_node *new)
 {
-	t_node *current;
+	t_node	*tmp;
 
-	current = *alst;
-	if (*alst)
-	{
-		while (current->next)
-		{
-			current = current->next;
-		}
-		new->next = current->next;
-		current->next = new;
-	}
+	tmp = *alst;
+	if (!tmp)
+		*alst = new;
 	else
 	{
-		new->next = current ;
-		current = new;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = new;
 	}
 }

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_node.c                                       :+:      :+:    :+:   */
+/*   ft_print_node.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/18 22:55:34 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/19 00:39:52 by ikrkharb         ###   ########.fr       */
+/*   Created: 2019/05/19 23:51:29 by ikrkharb          #+#    #+#             */
+/*   Updated: 2019/05/20 00:01:57 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void    print_nodes(t_node *node)
+void    ft_print_node(t_node *node)
 {
 	int     i;
 
