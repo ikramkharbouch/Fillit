@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   del_tetris.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/16 17:08:51 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/17 23:28:42 by ikrkharb         ###   ########.fr       */
+/*   Created: 2019/05/20 01:35:19 by ikrkharb          #+#    #+#             */
+/*   Updated: 2019/05/20 01:35:55 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "fillit.h"
 
-# define BUFF_SIZE 32
+void	del_tetris(t_node **head)
+{
+	t_node	*tmp;
+	t_node	*next;
 
-# include <unistd.h>
-# include "libft/libft.h"
-
-int	get_next_line(const int fd, char **line);
-void	fillit(int fd);
-
-#endif
+	tmp = *head;
+	while (tmp)
+	{
+		next = tmp->next;
+		ft_del_array(tmp->content);
+		ft_memdel((void **)&(tmp->content));
+		ft_memdel((void **)&tmp);
+		tmp = next;
+	}
+}

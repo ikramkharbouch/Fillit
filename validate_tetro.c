@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   validate_tetro.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 15:50:35 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/20 17:48:23 by ikrkharb         ###   ########.fr       */
+/*   Created: 2019/05/20 16:37:43 by ikrkharb          #+#    #+#             */
+/*   Updated: 2019/05/20 17:40:06 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		main(void)
+int		space_is_valid(t_node *node)
 {
-	t_node	*head;
-	int		fd;
+	int i;
 
-	fd = open("input", O_RDONLY);
-	head = read_fd(fd);
-	close(fd);
-	if (!head)
-		return (1);
-	print_tetris(head);
-	del_tetris(&head);
-	return (0);
+
+int		validate_tetro(t_node **head)
+{
+	t_node	*current;
+
+	current = *head;
+	while (current)
+	{
+		
+		current = current->next;
+	}
+	return (1);
 }

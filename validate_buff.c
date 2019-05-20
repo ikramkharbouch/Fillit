@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   validate_buff.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 15:50:35 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/20 17:48:23 by ikrkharb         ###   ########.fr       */
+/*   Created: 2019/05/20 17:40:13 by ikrkharb          #+#    #+#             */
+/*   Updated: 2019/05/20 18:09:38 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		main(void)
+int		validate_buff(char *buff)
 {
-	t_node	*head;
-	int		fd;
+	int i;
+	int j;
 
-	fd = open("input", O_RDONLY);
-	head = read_fd(fd);
-	close(fd);
-	if (!head)
-		return (1);
-	print_tetris(head);
-	del_tetris(&head);
+	i = 0;
+	j = 4;
+	while (buff[i])
+	{
+		if (i == (int)(ft_strlen(buff) - 1) && buff[i] == '\n')
+			return (1);
+		if (buff[i] == '\n' && i == j)
+			j += 5;
+		else if (buff[i] == '\n' && i != j)
+			break;
+		i++;
+	}
 	return (0);
 }
+
