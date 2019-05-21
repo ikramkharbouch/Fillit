@@ -1,31 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_tetro.c                                   :+:      :+:    :+:   */
+/*   validate_buff.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/20 16:37:43 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/20 17:40:06 by ikrkharb         ###   ########.fr       */
+/*   Created: 2019/05/20 18:34:26 by ikrkharb          #+#    #+#             */
+/*   Updated: 2019/05/20 22:54:52 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		space_is_valid(t_node *node)
+int		validate_tetro(char *buff)
 {
 	int i;
+	int j;
+	int	count;
 
-
-int		validate_tetro(t_node **head)
-{
-	t_node	*current;
-
-	current = *head;
-	while (current)
+	i = 0;
+	count = 0;
+	j = 4;
+	while (buff[i])
 	{
-		
-		current = current->next;
+		if ((i == 20 || i == j) && buff[i] == '\n')
+		{
+			j += 5;
+			i++;
+			continue;
+		}
+		if (buff[i] != '.' && buff[i] != '#')
+			break ;
+		if (buff[i] == '#')
+			count++;
+		i++;
 	}
-	return (1);
+	if (i == 21 && buff[20] == '\n' && count == 4)
+		return (1);
+	return (0);
 }
+

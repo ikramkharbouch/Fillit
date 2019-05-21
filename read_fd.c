@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 23:32:09 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/20 00:51:23 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2019/05/20 18:32:00 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ t_node	*read_fd(int fd)
 	while ((n = read(fd, buff, BUF_SIZE)))
 	{
 		buff[n] = '\0';
+		if (!validate_tetro(buff))
+		{
+			del_tetris(&head);
+			return (NULL);
+		}
 		if (add_tetro(&head, buff) == -1)
 		   return (NULL);
 	}

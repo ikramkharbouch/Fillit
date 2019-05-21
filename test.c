@@ -1,28 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 15:50:35 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/20 17:48:23 by ikrkharb         ###   ########.fr       */
+/*   Created: 2019/05/20 21:20:52 by ikrkharb          #+#    #+#             */
+/*   Updated: 2019/05/21 00:36:00 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		main(void)
-{
-	t_node	*head;
-	int		fd;
+int		check_connections(char **str);
 
-	fd = open("input", O_RDONLY);
-	head = read_fd(fd);
-	close(fd);
-	if (!head)
-		return (1);
-	print_tetris(head);
-	del_tetris(&head);
+int		main(int argc, char *argv[])
+{
+	(void)argc;
+	char	buff[BUF_SIZE + 1];
+	char	**temp;
+	int fd;
+	int n;
+
+	fd = open(argv[1], O_RDONLY);
+	while ((n = read(fd, buff, BUF_SIZE)))
+	{
+		buff[n] = '\0';
+		if (!(temp = ft_strsplit(buff, '\n')))
+			return (1);
+		if (validate_tetro(buff))
+		{
+			printf("connections = %d\n", check_connections(temp));
+		}
+		else
+			printf("not valid\n");
+		ft_del_array(temp);
+	}
 	return (0);
 }

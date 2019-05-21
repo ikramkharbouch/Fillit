@@ -6,22 +6,23 @@
 #    By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/07 12:58:57 by ikrkharb          #+#    #+#              #
-#    Updated: 2019/05/19 21:07:40 by ikrkharb         ###   ########.fr        #
+#    Updated: 2019/05/20 22:53:02 by ikrkharb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = library.a
+NAME = fillit
 
 FLAGS = -Wall -Wextra -Werror
 
-SRCS = $(shell find . -maxdepth 1 -type f | grep -E "\.c")
+SRCS = $(shell find . -maxdepth 1 -type f | grep -e "\.c$$")
 
 OBJ = $(SRCS:.c=.o)
 
+LIBFT = "libft/libft.a"
+
 $(NAME): $(OBJ) fillit.h
 	@gcc $(FLAGS) -c $(SRCS)
-	@ar rc $(NAME) $(OBJ)
-	@ranlib $(NAME)
+	@gcc $(FLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 
 all: $(NAME)
 

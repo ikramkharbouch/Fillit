@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_buff.c                                    :+:      :+:    :+:   */
+/*   check_connections.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/20 17:40:13 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/20 18:09:38 by ikrkharb         ###   ########.fr       */
+/*   Created: 2019/05/20 22:05:33 by ikrkharb          #+#    #+#             */
+/*   Updated: 2019/05/20 22:23:38 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		validate_buff(char *buff)
+int		check_connections(char **str)
 {
 	int i;
-	int j;
+	int	j;
+	int	count;
 
-	i = 0;
-	j = 4;
-	while (buff[i])
+	j = 0;
+	count = 0;
+	while (str[j])
 	{
-		if (i == (int)(ft_strlen(buff) - 1) && buff[i] == '\n')
-			return (1);
-		if (buff[i] == '\n' && i == j)
-			j += 5;
-		else if (buff[i] == '\n' && i != j)
-			break;
-		i++;
+		i = 0;
+		while (str[j][i])
+		{
+			if (str[j][i] == '#' && i + 1 < 4 && str[j][i + 1] == '#')
+				count += 2;
+			if (str[j][i] == '#' && j + 1 < 4 && str[j + 1][i] == '#')
+				count += 2;
+			i++;
+		}
+		j++;
 	}
-	return (0);
+	return (count);
 }
-
