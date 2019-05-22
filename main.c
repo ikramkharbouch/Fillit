@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/20 21:20:52 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/21 00:36:00 by ikrkharb         ###   ########.fr       */
+/*   Created: 2019/05/21 23:07:32 by ikrkharb          #+#    #+#             */
+/*   Updated: 2019/05/21 23:38:46 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,20 @@ int		check_connections(char **str);
 
 int		main(int argc, char *argv[])
 {
-	(void)argc;
 	char	buff[BUF_SIZE + 1];
 	char	**temp;
 	int fd;
 	int n;
 
 	fd = open(argv[1], O_RDONLY);
+	if (argc != 2)
+	{
+		ft_putstr("usage: ");
+		ft_putstr(argv[0]);
+		ft_putstr(" input_file\n");
+		return (0);
+	}
+
 	while ((n = read(fd, buff, BUF_SIZE)))
 	{
 		buff[n] = '\0';
