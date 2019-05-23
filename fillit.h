@@ -6,14 +6,14 @@
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 00:48:00 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/20 21:39:26 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2019/05/22 22:43:06 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 #define FILLIT_H
 
-# define BUF_SIZE 21
+# define BUF_SIZE 20
 
 # include <fcntl.h>
 # include <stdio.h>

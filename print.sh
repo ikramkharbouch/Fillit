@@ -1,35 +1,22 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    validation.sh                                      :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/04/07 12:58:57 by ikrkharb          #+#    #+#              #
-#    Updated: 2019/05/22 23:58:49 by ikrkharb         ###   ########.fr        #
+#    Created: 2019/05/21 23:09:24 by ikrkharb          #+#    #+#              #
+#    Updated: 2019/05/23 00:37:42 by ikrkharb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fillit
+#!/bin/sh
 
-FLAGS = -Wall -Wextra -Werror
+FILES=`ls samples`
 
-SRCS = $(shell find . -maxdepth 1 -type f | grep -e "\.c$$")
-
-OBJ = $(SRCS:.c=.o)
-
-LIBFT = "libft/libft.a"
-
-$(NAME): $(OBJ) fillit.h
-	@gcc $(FLAGS) -c $(SRCS)
-	@gcc $(FLAGS) $(OBJ) $(LIBFT) -o $(NAME)
-
-all: $(NAME)
-
-clean:
-	@/bin/rm -f $(OBJ)
-
-fclean: clean
-	@/bin/rm -f $(NAME)
-
-re: fclean all
+for entry in $FILES
+do
+	echo "########## [ $entry ] ##########"
+	result=`cat samples/$entry`
+	echo "$result"
+done
