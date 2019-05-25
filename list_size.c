@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   list_size.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/02 14:28:40 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/24 19:21:22 by ikrkharb         ###   ########.fr       */
+/*   Created: 2019/05/24 21:23:57 by ikrkharb          #+#    #+#             */
+/*   Updated: 2019/05/24 21:28:32 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 
-char		*ft_strsub(char const *s, unsigned int start, size_t len)
+int		list_size(t_node *head)
 {
-	char	*str;
-	size_t	i;
+	int i;
 
-	str = (char *)malloc(sizeof(char) * (len + 1));
-	if (!str)
-		return (NULL);
 	i = 0;
-	while (i < len)
+	while (head)
 	{
-		str[i] = s[start];
-		start++;
 		i++;
+		head = head->next;
 	}
-	str[i] = '\0';
-	return (str);
+	return (i);
 }
+

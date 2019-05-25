@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 23:32:09 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/23 00:43:12 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2019/05/24 21:25:40 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,43 +31,41 @@ int		add_tetro(t_node **head, char *buff)
 	return (1);
 }
 
+void	verify_fd(t_node **head, char *buff, int size)
+{
+	if (size != 20)
+	{
+		ft_putstr("error\n");
+		exit(1);
+	}
+	if (!validate_tetro(buff))
+	{
+		ft_putstr("error\n");
+		del_tetris(head);
+		exit(1);
+	}
+}
+
 t_node	*read_fd(int fd)
 {
 	char	buff[BUF_SIZE + 1];
 	t_node	*head;
-	int		n;
+	int		size;
 	int		newline;
 
 	head = NULL;
-	while ((n = read(fd, buff, BUF_SIZE)) || newline)
+	while ((size = read(fd, buff, BUF_SIZE)) || newline)
 	{
 		newline = 0;
-		buff[n] = '\0';
-		if (n != 20)
-		{
-			ft_putstr("error\n");
-			exit(1);
-		}
-		if (!validate_tetro(buff))
-		{
-			ft_putstr("error\n");
-			del_tetris(&head);
-			return (NULL);
-		}
+		buff[size] = '\0';
+		verify_fd(&head, buff, size);
 		if (add_tetro(&head, buff) == -1)
-		{
 			return (NULL);
-		}
-		n = read(fd, buff, 1);
-		buff[n] = '\0';
+		size = read(fd, buff, 1);
+		buff[size] = '\0';
 		if (buff[0] == '\n')
-		{
-			ft_putstr("valid\n");
 			newline = 1;
-		}
-		else if (buff[0] == '\0')
-			ft_putstr("valid\n");
-		else
+		else if (buff[0] != '\0')
 		{
 			ft_putstr("error\n");
 			exit(1);

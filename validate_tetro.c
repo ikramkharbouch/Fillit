@@ -6,17 +6,32 @@
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 20:59:04 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/22 23:51:59 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2019/05/24 21:25:02 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
+int		last_check(char *buff, int i, int count)
+{
+	char	**temp;
+	int		ret;
+
+	temp = ft_strsplit(buff, '\n');
+	if (i == 20 && count == 4 && check_connections(temp) >= 6)
+		ret = 1;
+	else
+		ret = 0;
+	ft_del_array(temp);
+	ft_memdel((void **)&temp);
+	return (ret);
+}
+
 int		validate_tetro(char *buff)
 {
-	int i;
-	int j;
-	int	count;
+	int		i;
+	int		j;
+	int		count;
 
 	i = 0;
 	count = 0;
@@ -35,7 +50,5 @@ int		validate_tetro(char *buff)
 			count++;
 		i++;
 	}
-	if (i == 20 && count == 4)
-		return (1);
-	return (0);
+	return (last_check(buff, i, count));
 }

@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   place_tetros.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/02 14:28:40 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/24 19:21:22 by ikrkharb         ###   ########.fr       */
+/*   Created: 2019/05/24 19:10:21 by ikrkharb          #+#    #+#             */
+/*   Updated: 2019/05/24 23:58:36 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 
-char		*ft_strsub(char const *s, unsigned int start, size_t len)
+void	place_tetros(t_node *head)
 {
-	char	*str;
-	size_t	i;
+	char	***temp;
+	int		length;
+	int		i;
 
-	str = (char *)malloc(sizeof(char) * (len + 1));
-	if (!str)
-		return (NULL);
+	length = list_size(head);
+	if (!(temp = (char ***)malloc(sizeof(char *) * (length + 1))))
+		exit(1);
 	i = 0;
-	while (i < len)
+	while (head)
 	{
-		str[i] = s[start];
-		start++;
+		temp[i] = head->content;
+		ft_print_array(temp[i], 0);
+		head = head->next;
 		i++;
 	}
-	str[i] = '\0';
-	return (str);
+	ft_del_array(*temp);
+	ft_memdel((void **)&temp);
 }
+	
