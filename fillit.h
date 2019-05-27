@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 00:48:00 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/24 23:20:58 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2019/05/27 16:46:35 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ void					ft_print_node(t_node *node);
 void					del_tetris(t_node **head);
 void					print_tetris(t_node *head);
 int						validate_tetro(char *buff);
-int						check_connections(char **str);
 int						list_size(t_node *head);
-void					place_tetros(t_node *head);
 
 #endif

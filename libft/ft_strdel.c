@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/31 18:19:07 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/04/06 22:18:44 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2019/05/26 02:41:56 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,5 @@
 
 void	ft_strdel(char **as)
 {
-	free(*as);
-	*as = NULL;
+	ft_memdel((void **)as);
 }

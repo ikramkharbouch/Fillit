@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 23:07:32 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/25 20:49:48 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2019/05/27 16:46:21 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		main(int argc, char *argv[])
 		printf("error");
 		exit(1);
 	}
-	place_tetros(head);
+	print_tetris(head);
 	if (head)
 		del_tetris(&head);
 	return (0);
