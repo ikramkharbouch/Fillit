@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_size.c                                        :+:      :+:    :+:   */
+/*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/24 21:23:57 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/28 23:30:56 by ikrkharb         ###   ########.fr       */
+/*   Created: 2019/05/27 17:06:23 by ikrkharb          #+#    #+#             */
+/*   Updated: 2019/05/28 22:40:13 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		list_size(t_node *head)
+void	solver(t_node *head)
 {
 	int i;
 
 	i = 0;
 	while (head)
 	{
-		i++;
+		convert_shift(head,i);
 		head = head->next;
+		i++;
 	}
-	return (i);
 }
-

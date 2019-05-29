@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_size.c                                        :+:      :+:    :+:   */
+/*   ft_min.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/24 21:23:57 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/28 23:30:56 by ikrkharb         ###   ########.fr       */
+/*   Created: 2019/05/27 23:47:07 by ikrkharb          #+#    #+#             */
+/*   Updated: 2019/05/27 23:48:58 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int		list_size(t_node *head)
+int		ft_min(char *tab)
 {
 	int i;
+	int min;
 
 	i = 0;
-	while (head)
+	min = ft_max(tab);
+	while(tab[i])
 	{
+		if (tab[i] < min)
+			min = tab[i];
 		i++;
-		head = head->next;
 	}
-	return (i);
+	return (min);
 }
-

@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 21:53:29 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/18 22:22:47 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2019/05/27 23:48:10 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,7 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list
 t_list				*ft_lstmap(t_list *lst, t_list *
 					(*f)(t_list *elem));
 void				ft_lst_push_back(t_list **alst, t_list *new);
+int					ft_max(int *tab);
+int					ft_min(int *tab);
 
 #endif

@@ -1,0 +1,18 @@
+#!/usr/bin/python3
+
+import argparse
+
+ap = argparse.ArgumentParser()
+ap.add_argument('-t', '--total', type=int, required=True,
+            help='Total tetris')
+args = vars(ap.parse_args())
+
+f = open('input_26', 'w')
+
+total = args['total']
+content = '....\n..##\n..##\n....\n\n'
+result = [content for i in range(total)]
+result = ''.join(result)[:-1]
+
+f.write(result)
+f.close()

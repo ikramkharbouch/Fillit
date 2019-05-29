@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_size.c                                        :+:      :+:    :+:   */
+/*   create_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/24 21:23:57 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/28 23:30:56 by ikrkharb         ###   ########.fr       */
+/*   Created: 2019/05/27 20:59:07 by ikrkharb          #+#    #+#             */
+/*   Updated: 2019/05/28 22:41:41 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		list_size(t_node *head)
+int		ft_sqrt(int nb)
 {
 	int i;
 
 	i = 0;
-	while (head)
+	while (i * i < nb)
 	{
 		i++;
-		head = head->next;
 	}
 	return (i);
 }
-

@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_size.c                                        :+:      :+:    :+:   */
+/*   ft_max.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/24 21:23:57 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/28 23:30:56 by ikrkharb         ###   ########.fr       */
+/*   Created: 2019/05/27 23:45:22 by ikrkharb          #+#    #+#             */
+/*   Updated: 2019/05/27 23:46:57 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int		list_size(t_node *head)
+int		ft_max(char *tab)
 {
 	int i;
+	int max;
 
 	i = 0;
-	while (head)
+	max = -1;
+	while(tab[i])
 	{
+		if (tab[i] > max)
+			max = tab[i];
 		i++;
-		head = head->next;
 	}
-	return (i);
+	return (max);
 }
-

@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 00:48:00 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/27 16:46:35 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2019/05/29 00:03:12 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 typedef struct			s_node
 {
 	char				**content;
+	char				tab[4][2];
 	struct s_node		*next;
 }						t_node;
 
@@ -35,5 +36,7 @@ void					del_tetris(t_node **head);
 void					print_tetris(t_node *head);
 int						validate_tetro(char *buff);
 int						list_size(t_node *head);
-
+void					solver(t_node *head);
+void					convert_shift(t_node *node, int order);
+void					print_coords(t_node *head);
 #endif
