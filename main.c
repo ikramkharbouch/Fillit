@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 23:07:32 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/29 00:18:31 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2019/05/29 01:49:29 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		main(int argc, char *argv[])
 {
 	int		fd;
 	t_node	*head;
+	char	**map;
 
 	if (argc != 2)
 	{
@@ -38,9 +39,9 @@ int		main(int argc, char *argv[])
 		del_tetris(&head);
 		return (1);
 	}
-	solver(head);
-	print_tetris(head);
-	print_coords(head);
+	map = solver(head);
+	// print_tetris(head);
+	//print_coords(head);
 	del_tetris(&head);
 	return (0);
 }

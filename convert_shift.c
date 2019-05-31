@@ -6,13 +6,15 @@
 /*   By: ikrkharb <ikrkharb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 16:58:14 by ikrkharb          #+#    #+#             */
-/*   Updated: 2019/05/27 17:09:17 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2019/05/29 23:39:24 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	convert_shift(t_node *node, int order)
+char	**ft_shift(char **tab);
+
+static void	_convert_shift(t_node *node, int order)
 {
 	int i;
 	int j;
@@ -28,5 +30,20 @@ void	convert_shift(t_node *node, int order)
 			j++;
 		}
 		i++;
+	}
+}
+
+void		convert_shift(t_node *head)
+{
+	int	i;
+
+	i = 0;
+	char	**temp;
+	while (head)
+	{
+		_convert_shift(head, i++);
+		temp = ft_shift(head->content);
+		ft_print_array(temp, 1);
+		head = head->next;
 	}
 }
